@@ -1,0 +1,82 @@
+{{!-- {{>header}} --}}
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand text-info" href="/">HOME PAGE</a>
+</nav>
+<div class="container ">
+        <h3 class="py-4 ">Admin page</h3>
+        <a href="/courses/create" class="badge badge-success p-3 mb-3" >Create New Product</a>
+
+<div class="admin-table">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Create Time</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+        {{#each courses}}
+                <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>
+                        <a href="/courses/{{this._id}}/edit" class="badge badge-success px-3 py-2">Edit</a>
+                        <a class="badge badge-danger px-3 py-2" data-id="{{this._id}}" data-toggle="modal" data-target="#deleteModal" href="#">Delete</b>
+                </td>
+                </tr>
+        {{/each}}
+  </tbody>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete This Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to Delete ?
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-product" type="button" class="btn btn-danger">Delete</button>
+        <button  type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{{!-- DELETE hidden form --}}
+<form name="delete-product-form" method="POST" ></form>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+                var ProductId;
+                var deleteForm = document.forms['delete-product-form'];
+                var btnDeleteProduct = document.getElementById('btn-delete-product');
+
+        $('#deleteModal').on('show.bs.modal',function (event){
+                var button = $(event.relatedTarget);
+                 ProductId = button.data('id');
+        })
+
+        btnDeleteProduct.onclick = function (event) {
+                console.log(ProductId);
+                deleteForm.action = '/courses/' + ProductId + '?_method=DELETE';
+                deleteForm.submit();
+        }
+        console.log(btnDeleteProduct);
+
+        })
+
+
+</script>

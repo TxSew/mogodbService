@@ -1,0 +1,20 @@
+{{>header}}
+<div class="container pt-2">
+<div class="row">
+    <div class="col-6 ">
+        <div class="card">
+            <img class="card-img-top" src="{{course.imageUrl}}" alt="" height="500px"  />
+            <div class="card-body">
+                <h4 class="card-title">{{course.name}}</h4>
+                <p class="card-text">{{course.description}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6  py-5 my-5">
+        <h4 class="pb-4">{{course.name}}</h4>
+        <h3 class="pb-4"> ${{course.price}}</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis accusantium iusto officia minima reprehenderit illo fugiat perspiciatis dignissimos dolorum consectetur. Eligendi libero harum dolorem provident nihil maiores animi laborum natus.</p>
+        <a href="#" class="btn btn-warning w-50"> Buy now <i class="fa-sharp fa-solid fa-cart-shopping"></i></a>
+    </div>
+</div>
+</div>
