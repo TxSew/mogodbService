@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const Course = require("../models/Course");
 
 const { multipleMongooseToObject } = require("../../util/mongoose");
@@ -21,14 +22,21 @@ class SiteController {
   search(req, res) {
     res.render("search");
   }
+  middleware(req, res, next) {
+    const token = req.params.token
+    const ketqua = jwt.verify(token, 'mk')
+    try {
+      if (ketqua) {
+        next()
+      }
+    }
+    catch (err) {
+      return res.json('loi server')
+    }
+  }
   //get login
-  login(req, res, next) {
-    // if (req.isAuthenticated()) {
-    //   next();
-    // } else {
-    //   res.redirect("/login");
-    // }
-    res.render("login");
+  provider(req, res, next) {
+    res.json('hhone')
   }
 }
 

@@ -16,16 +16,13 @@ class CourseController {
   }
   //POST
   store(req, res, next) {
-    // res.json(req.body);
-    // const formData = req.body;
-    // formData.imageUrl
-    const course = new Course(req.body);
+        const course = new Course(req.body);
     course
       .save()
       .then(() => {
         res.redirect("/admin");
       })
-      .catch((error) => {});
+      .catch(next);
   }
 
   edit(req, res, next) {
