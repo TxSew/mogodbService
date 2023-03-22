@@ -4,6 +4,7 @@ const Course = require("../models/Course");
 class AdminController {
   //get /news
   index(req, res, next) {
+    console.log(req.data)
     Course.find({})
       .then((courses) =>
         res.render("admin", {

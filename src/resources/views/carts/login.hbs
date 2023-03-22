@@ -1,24 +1,14 @@
-<script
-  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-  crossorigin="anonymous"
-></script>
+
 <div class="container">
   <div class="d-flex flex-column align-items-center">
     <h3 class="py-5">Login to your account</h3>
     <div class="py-5 px-5 border border-info rounded">
-      <form action="/carts/checkUser" method="POST">
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <label for="exampleInputEmail1">username</label>
           <input
             type="text"
             class="form-control"
-            id="exampleInputEmail1"
+            id="username"
             aria-describedby="emailHelp"
             placeholder="admin@example.com"
             name="username"
@@ -27,16 +17,15 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input
-            type="password"
+            type="text"
             class="form-control"
-            id="exampleInputPassword1"
+            id="password"
             placeholder="********"
             name="password"
           />
         </div>
-        <button type="submit"> login</button>
-        <a href="/admin" class="btn btn-primary w-100 mt-3 pt-2">Login</a>
-      </form>
+        <button  onclick="login()"> login</button>
+        {{!-- <a href="/admin" class="btn btn-primary w-100 mt-3 pt-2">Login</a> --}}
     </div>
   </div>
 
@@ -48,19 +37,21 @@ function setCookie(cname, cvalue, exdays) {
   let expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
+
+
+ function login() {
+  $.ajax({
+  url:'http://localhost:8000/carts/checkUser',
+  type: "POST",
+  data : {
+  username : $('#username').val(),
+  password : $('#password').val()
   }
-  return "";
-}
+  })
+  .then((data)=> {
+     console.log(data)
+     setCookie('token' , data.token , 1)
+  })
+ }
+   
  </script>

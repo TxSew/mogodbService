@@ -1,10 +1,8 @@
 var express = require("express");
 var router = express.Router();
 const adminController = require("../app/controllers/AdminController");
+const middleware = require("../middleware/middleware");
+const checkAdmin = require("../middleware/checkAdmin");
 // router.get("/:slug", adminController.show);
-router.get("/", adminController.index);
+router.get("/", middleware, adminController.index);
 module.exports = router;
-// app.get("/news", (req, res) => {
-//   console.log(req.query);
-//   res.render("news");
-// });

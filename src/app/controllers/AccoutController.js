@@ -1,5 +1,6 @@
 const { multipleMongooseToObject } = require("../../util/mongoose");
 const Accouts = require("../models/Accout")
+ const jwt = require('jsonwebtoken')
 class AccoutController {
   register(req, res, next) {
     res.render('carts/register')
@@ -17,6 +18,7 @@ class AccoutController {
       })
       .catch(next);
   }
+
   checkUser(req, res, next) {
     const username = req.body.username
     const password = req.body.password
@@ -30,7 +32,7 @@ class AccoutController {
             _id: data._id
           }, 'mk')
           res.json({
-            message: 'thanh cong',
+            message: 'success',
             token: token
           })
         }

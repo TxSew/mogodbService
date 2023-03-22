@@ -8,7 +8,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 const app = express();
 app.use(cookieParser())
-const port =  process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const db = require("./config/db/");
 const route = require("./routes");
 app.use(express.static(path.join(__dirname, "public")));
