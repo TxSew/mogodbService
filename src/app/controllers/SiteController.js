@@ -5,9 +5,6 @@ const { multipleMongooseToObject } = require("../../util/mongoose");
 class SiteController {
   //get /news
   index(req, res, next) {
-    // res.json({
-    //   name: "test",
-    // });
     Course.find({})
       .then((courses) => {
         res.render("home", {
@@ -15,16 +12,10 @@ class SiteController {
         });
       })
       .catch(next);
-    // res.render("home");
   }
   //get /news/:slug
   search(req, res) {
     res.render("search");
-  }
- 
-  //get login
-  provider(req, res, next) {
-    res.json('hhone')
   }
 }
 

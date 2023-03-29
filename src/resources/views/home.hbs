@@ -1,6 +1,7 @@
-{{>header}}
-<div class="container">
-  <div class="mt-4">
+  
+ {{>header}}
+<div class="">
+  <div class="mt-5">
     <div class="row">
       {{#each courses}}
         <div class="col-sm-6 col-lg-4">
@@ -9,6 +10,8 @@
               class="card-img-top"
               src="{{this.imageUrl}}"
               alt="Card image cap"
+               
+                style="height: 300px"
             />
             <div class="card-body">
                 <div class="d-flex justify-content-between
@@ -17,6 +20,7 @@
               <h6    class="" > <a href="#" style="text-decoration:none ;">
                 ${{this.price}}
               </a> </h6>
+
                 </div>
               <p class="card-text">{{this.description}}</p>
               <div class="card__btn row ">
@@ -33,6 +37,8 @@
           </div>
         </div>
       {{/each}}
-    </div>
   </div>
 </div>
+
+ {{>footer}}
+

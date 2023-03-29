@@ -1,10 +1,21 @@
-
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+<script src = "https://ajax.googleapis.com/ajax/libs/jQuery/3.3.1/jQuery.min.js">
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"
+></script>
 <div class="container">
   <div class="d-flex flex-column align-items-center">
     <h3 class="py-5">Login to your account</h3>
     <div class="py-5 px-5 border border-info rounded">
+      <form action="/carts/checkUser" method="POST">
         <div class="form-group">
-          <label for="exampleInputEmail1">username</label>
+          <label for="username">Username </label>
           <input
             type="text"
             class="form-control"
@@ -15,7 +26,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label for="password">Password</label>
           <input
             type="text"
             class="form-control"
@@ -24,34 +35,27 @@
             name="password"
           />
         </div>
-        <button  onclick="login()"> login</button>
-        {{!-- <a href="/admin" class="btn btn-primary w-100 mt-3 pt-2">Login</a> --}}
+        <button type="button" onclick="login()"> login</button>
+        <a href="/admin" class="btn btn-primary w-100 mt-3 pt-2">Login</a>
+      </form>
     </div>
   </div>
 
 </div>
  <script>
-function setCookie(cname, cvalue, exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  let expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-
- function login() {
+ function login (){
   $.ajax({
-  url:'http://localhost:8000/carts/checkUser',
+  url: "http://localhost:8000/carts/checkUser"
   type: "POST",
-  data : {
-  username : $('#username').val(),
-  password : $('#password').val()
+  data: {
+   username : $('#username').val()
+   password : $('#password').val()
   }
-  })
-  .then((data)=> {
-     console.log(data)
-     setCookie('token' , data.token , 1)
-  })
- }
-   
+  }).then(data => {
+   console.log(data)
+   })
+    .catch(err => {
+     console.log(err)
+    })
+  }
  </script>

@@ -1,11 +1,94 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand text-info" href="/">HOME PAGE</a>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="/carts/login">Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/carts/register">Register</a>
-    </li>
-  </ul>
-</nav>
+    <div class="container-lg">
+        <div class="nav">
+            <label for="nav-mobile-input" class="nav_bars-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <input hidden type="checkbox" name="" class="nav_input" id="nav-mobile-input">
+            <label for="nav-mobile-input" class="nav_overlay"></label>
+            <nav class="nav-mobile">
+                <label for="nav-mobile-input" class="nav__mobile-close">
+                    <i class="fas fa-times"></i>
+                </label>
+                <ul class="nav__mobile-list">
+
+                    <li class="nav__mobile-list-user">
+
+                        <p><i class="fas fa-user"></i><a href="DangNhap.html">Đăng nhập</a> <span>/</span> <a href="DangKy.html">Đăng ký</a>
+                        </p>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="" class="nav__mobile-link">TRANG CHỦ</a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="" class="nav__mobile-link">SẢN PHẨM</a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="" class="nav__mobile-link">Khóa học</a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="" class="nav__mobile-link">TIN TỨC</a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="" class="nav__mobile-link">LIÊN HỆ</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-logo">
+                <h1>TC</h1>
+                <p>SHOP</p>
+            </div>
+            <nav class="nav-pc">
+                <ul class="nav__list">
+                    <li>
+                        <a style="color:#ffac4b" href="home.html" class="nav__link">TRANG CHỦ</a>
+                    </li>
+                    <li class="options">
+                        <a href="" class="nav__link">SẢN PHẨM</a>
+                        <div class="nav__link-options">
+                            <ul class="nav__link-options-list">
+                                <hr>
+                                <hr>
+                                <li><a href="#">Phụ kiện</a></li>
+                                <hr>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="" class="nav__link">TIN TỨC</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav__link">LIÊN HỆ</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-right">
+                <div class="search">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <div class="search-hover">
+                        <form>
+                            <input class="search" type="text" name="search" placeholder="Tìm kiếm..." />
+                        </form>
+                    </div>
+                </div>
+                <div class="user">
+                    <a href="#"> <i class="fas fa-user"></i></a>
+                    <div class="user-hover">
+                        <ul class="user-hover-list">
+                            <li class="nav_link"><a href="DangNhap.html">Đăng nhập</a></li>
+                            <li><a href="DangKy.html">Đăng Ký</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="shopping">
+                    <a href="card.html"><i class="fas fa-shopping-cart"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </div>

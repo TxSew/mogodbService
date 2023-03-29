@@ -16,15 +16,14 @@ class CourseController {
   }
   //POST
   store(req, res, next) {
-        const course = new Course(req.body);
+    const course = new Course(req.body);
     course
       .save()
       .then(() => {
         res.redirect("/admin");
       })
-      .catch(next);
+      .catch((error) => {});
   }
-
   edit(req, res, next) {
     Course.findById(req.params.id)
       .then((course) =>

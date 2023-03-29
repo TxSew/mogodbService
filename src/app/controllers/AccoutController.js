@@ -1,10 +1,11 @@
 const { multipleMongooseToObject } = require("../../util/mongoose");
 const Accouts = require("../models/Accout")
- const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 class AccoutController {
   register(req, res, next) {
     res.render('carts/register')
   }
+
   login(req, res, next) {
     res.render('carts/login')
   }
@@ -35,14 +36,13 @@ class AccoutController {
             message: 'success',
             token: token
           })
+          res.redirect('/')
         }
         else {
           return res.json('that bai')
         }
       })
-      .catch((err) => {
-        res.status(500).json('that bai')
-      })
+      .catch(next)
   }
 }
 module.exports = new AccoutController()

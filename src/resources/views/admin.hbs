@@ -1,10 +1,27 @@
-{{!-- {{>header}} --}}
 <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand text-info" href="/">HOME PAGE</a>
 </nav>
 <div class="container ">
         <h3 class="py-4 ">Admin page</h3>
         <a href="/courses/create" class="badge badge-success p-3 mb-3" >Create New Product</a>
+        <form method="POST" action="/admin/store" class="">
+      <input
+        type="text"
+        name="q"
+        class="form-control"
+        id="search-input"
+        placeholder="Search something..."
+      />
+       <button class="btn px-5 mt-2 btn-primary" type="submit">search</button>
+        </form>
+     <div class="form-group w-50">
+    <select class="form-control" name="category">
+   <option value="">chon danh muc</option>
+   <option value="nodejs">Nodejs</option>
+   <option value="reactjs">Reactjs</option>
+   <option value="php">PHP</option>
+    </select>
+  </div>
 <div class="admin-table">
 <table class="table table-striped">
   <thead>
@@ -53,9 +70,7 @@
 </div>
 </div>
 </div>
-{{!-- DELETE hidden form --}}
 <form name="delete-product-form" method="POST" ></form>
-
 <script>
         document.addEventListener('DOMContentLoaded', function() {
                 var ProductId;
@@ -73,8 +88,18 @@
                 deleteForm.submit();
         }
         console.log(btnDeleteProduct);
-
+        })
+         function timkiem () {
+  $.ajax({
+        url: 'http://:8000/admin',
+        type:"POST",
+         data : {
+         q: $('#search-input').val()
+         }
+        })
+        .then((data) => {
+         console.log(data)
         })
 
-
-</script>
+         }
+      </script>

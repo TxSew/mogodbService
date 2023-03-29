@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
 const adminController = require("../app/controllers/AdminController");
-const middleware = require("../middleware/middleware");
-const checkAdmin = require("../middleware/checkAdmin");
-// router.get("/:slug", adminController.show);
-router.get("/", middleware, adminController.index);
+const checkLogin = require("../middleware/checkLogin.js");
+const checkAdmin = require("../middleware/checkAdmin.js");
+router.get("/", checkLogin, adminController.index);
+router.post("/store",  adminController.store);
 module.exports = router;
