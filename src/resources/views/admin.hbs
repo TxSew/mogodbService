@@ -3,7 +3,9 @@
 </nav>
 <div class="container ">
         <h3 class="py-4 ">Admin page</h3>
-        <a href="/courses/create" class="badge badge-success p-3 mb-3" >Create New Product</a>
+        <a href="/courses/create" class="badge badge-success p-3 mb-3 py-5 px-5" >{{productCount}}  Product</a>
+        <a href="/courses/create" class="badge badge-success p-3 mb-3 py-5 px-5" >{{accountCount}} Account</a>
+        <a href="/courses/create" class="badge badge-success p-3 mb-3 py-5 px-5" >Commnent</a>
         <form method="POST" action="/admin/store" class="">
       <input
         type="text"
@@ -12,16 +14,11 @@
         id="search-input"
         placeholder="Search something..."
       />
-       <button class="btn px-5 mt-2 btn-primary" type="submit">search</button>
+       <button style="display:inline" class="btn px-5 mt-2 btn-primary" type="submit">search</button>
+
         </form>
-     <div class="form-group w-50">
-    <select class="form-control" name="category">
-   <option value="">chon danh muc</option>
-   <option value="nodejs">Nodejs</option>
-   <option value="reactjs">Reactjs</option>
-   <option value="php">PHP</option>
-    </select>
-  </div>
+    
+   <a href="/courses/create" class="btn px-5 mt-2 btn-primary badge-success " >create new course</a>
 <div class="admin-table">
 <table class="table table-striped">
   <thead>
@@ -34,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-        {{#each courses}}
+        {{#each products}}
                 <tr>
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.name}}</td>

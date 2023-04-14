@@ -1,61 +1,166 @@
-<script
-  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"
-></script>
-<script src = "https://ajax.googleapis.com/ajax/libs/jQuery/3.3.1/jQuery.min.js">
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-  crossorigin="anonymous"
-></script>
-<div class="container">
-  <div class="d-flex flex-column align-items-center">
-    <h3 class="py-5">Login to your account</h3>
-    <div class="py-5 px-5 border border-info rounded">
-      <form action="/carts/checkUser" method="POST">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>login</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container  {
+ margin: 0 auto;
+display:flex;
+justify-content: center
+}
+ 
+html {
+    color: #333;
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+}
+.main {
+    background: #f1f1f1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.form {
+    width: 360px;
+    min-height: 100px;
+    padding: 32px 24px;
+    text-align: center;
+    background: #fff;
+    border-radius: 2px;
+    margin: 24px;
+    align-self: center;
+    box-shadow: 0 2px 5px 0 rgba(51,62,73,0.6);
+}
+.form .heading {
+    font-size: 2rem;
+}
+.form .desc {
+    text-align: center;
+    color: #636d77;
+    font-size: 1.6rem;
+    font-weight: lighter;
+    line-height: 2.4rem;
+    margin-top: 16px;
+    font-weight: 300;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 16px;
+    flex-direction: column;
+}
+
+.form-label,
+.form-message {
+    text-align: left;
+}
+
+.form-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+}
+
+.form-control {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+}
+
+.form-control:hover {
+    border-color: #1dbfaf;
+}
+
+.form-group.invalid .form-control {
+    border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+    color: #f33a58;
+}
+
+.form-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+}
+
+.form-submit {
+    outline: none;
+    background-color: #1dbfaf;
+    margin-top: 12px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: #1ac7b6;
+}
+
+.spacer {
+    margin-top: 36px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+   <form action="/carts/checkUser" method="POST" class="form" id="form-2">
+        <h3 class="heading">Đăng nhập</h3>
+        <p class="desc">❤️</p>
+        <div class="spacer"></div>
         <div class="form-group">
-          <label for="username">Username </label>
-          <input
-            type="text"
-            class="form-control"
-            id="username"
-            aria-describedby="emailHelp"
-            placeholder="admin@example.com"
-            name="username"
-          />
+          <label for="email" class="form-label">Tài khoản</label>
+          <input id="email" name="username" type="text" placeholder="VD: taikhoan123" class="form-control">
+          <span class="form-message"></span>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="text"
-            class="form-control"
-            id="password"
-            placeholder="********"
-            name="password"
-          />
+          <label for="password" class="form-label">Mật khẩu</label>
+          <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+          <span class="form-message"></span>
         </div>
-        <button type="button" onclick="login()"> login</button>
-        <a href="/admin" class="btn btn-primary w-100 mt-3 pt-2">Login</a>
+        <button class="form-submit" onclick="login()">Đăng nhập</button>
       </form>
     </div>
   </div>
-
-</div>
- <script>
- function login (){
-  $.ajax({
-  url: "http://localhost:8000/carts/checkUser"
-  type: "POST",
-  data: {
-   username : $('#username').val()
+</body>
+<script type="text/javascript">
+ function login (e) {
+ function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+ ajax({
+ url:"http://localhost:3000/carts/checkUser",
+ type: "POST" ,
+ data: {
+   username : $('#username').val(),
    password : $('#password').val()
-  }
-  }).then(data => {
-   console.log(data)
-   })
-    .catch(err => {
-     console.log(err)
-    })
-  }
- </script>
+ }
+ })
+ .then((data) => {
+  setCoockie('token' , data.token , 1)
+ })
+ }
+</script>
+</html>
