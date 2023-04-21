@@ -1,34 +1,31 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>register</title>
-    <style>
-      * { padding: 0; margin: 0; box-sizing: border-box; } .container { margin:
-      auto auto; display:flex; justify-content: center; align-items:center }
-      html { color: #333; font-size: 62.5%; font-family: 'Open Sans',
-      sans-serif; } .main { background: #f1f1f1; max-height: 100vh; display:
-      flex; justify-content: center; } .form { width: 360px; min-height: 100px;
-      padding: 32px 24px; text-align: center; background: #fff; border-radius:
-      2px; margin: 24px; align-self: center; box-shadow: 0 2px 5px 0
-      rgba(51,62,73,0.6); } .form .heading { font-size: 2rem; } .form .desc {
-      text-align: center; color: #636d77; font-size: 1.6rem; font-weight:
-      lighter; line-height: 2.4rem; margin-top: 16px; font-weight: 300; }
-      .form-group { display: flex; margin-bottom: 16px; flex-direction: column;
-      } .form-label, .form-message { text-align: left; } .form-label {
-      font-weight: 700; padding-bottom: 6px; line-height: 1.8rem; font-size:
-      1.4rem; } .form-control { height: 40px; padding: 8px 12px; border: 1px
-      solid #b3b3b3; border-radius: 3px; outline: none; font-size: 1.4rem; }
-      .form-control:hover { border-color: #1dbfaf; } .form-group.invalid
-      .form-control { border-color: #f33a58; } .form-group.invalid .form-message
-      { color: #f33a58; } .form-message { font-size: 1.2rem; line-height:
-      1.6rem; padding: 4px 0 0; } .form-submit { outline: none;
-      background-color: #1dbfaf; margin-top: 12px; padding: 12px 16px;
-      font-weight: 600; color: #fff; border: none; width: 100%; font-size: 14px;
-      border-radius: 8px; cursor: pointer; } .form-submit:hover {
-      background-color: #1ac7b6; } .spacer { margin-top: 36px; }
-    </style>
-  </head>
-  <body>
+
+    <div class="header_section" style="background-color: #080808; padding: 16px 0px; margin-bottom: 10px;">
+		<div class="container">
+			<div class="row justify-between" style="justify-content: space-between;">
+				<div class="col-sm-3">
+					<div class="logo"><a href="#"><img src="../images/logo.png"></a></div>
+				</div>
+				<div class="col-sm-9">
+					<nav class="navbar navbar-expand-lg navbar-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content: end;">
+                        <div class="navbar-nav">
+                           <a class="nav-item nav-link" href="/">Home</a>
+                           <a class="nav-item nav-link" href="#collection">Collection</a>
+                           <a class="nav-item nav-link" href="racing boots.html">Racing Boots</a>
+                           <a class="nav-item nav-link" href="#contact">Contact</a>
+                           <a class="nav-item nav-link last" href="#"><img src="../images/search_icon.png"></a>
+                           <a class="nav-item nav-link last" href="contact.html"><img src="../images/shop_icon.png"></a>
+                        </div>
+                    </div>
+                    </nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	
     <div class="container">
 
       <form action="/carts/store" method="POST" class="form" id="form-1">
@@ -44,6 +41,7 @@
             type="text"
             placeholder="VD: player"
             class="form-control"
+            required
           />
           <span class="form-message"></span>
         </div>
@@ -56,6 +54,7 @@
             type="text"
             placeholder="VD: player"
             class="form-control"
+            required
           />
           <span class="form-message"></span>
         </div>
@@ -67,6 +66,7 @@
             type="text"
             placeholder="VD: email@domain.com"
             class="form-control"
+            required
           />
           <span class="form-message"></span>
         </div>
@@ -79,12 +79,85 @@
             type="password"
             placeholder="Nhập mật khẩu"
             class="form-control"
+            required
           />
           <span class="form-message"></span>
         </div>
+               <button class="form-submit btn btn-primary">Đăng ký</button>
 
-               <button class="form-submit">Đăng ký</button>
+         <a style="display: block ; float: right; clear: both " href="/carts/login">Login? now</a>
       </form>
     </div>
-  </body>
-</html>
+  <div class="section_footer mt-5" style="background-color: #080808; padding: 70px 0px;">
+    	<div class="container">
+    		<div class="mail_section">
+    			<div class="row">
+    				<div class="col-sm-6 col-lg-2">
+    					<div><a href="#"><img src="../images/footer-logo.png"></a></div>
+    				</div>
+    				<div class="col-sm-6 col-lg-2">
+    					<div class="footer-logo"><img src="../images/phone-icon.png"><span style="color:#ffffff80" class="map_text">(71) 1234567890</span></div>
+    				</div>
+    				<div class="col-sm-6 col-lg-3">
+    					<div class="footer-logo"><img src="../images/email-icon.png"><span style="color:#ffffff80" class="map_text">Demo@gmail.com</span></div>
+    				</div>
+    				<div class="col-sm-6 col-lg-3">
+    					<div class="social_icon">
+    						<ul style="color:#ffffff80 ; list-style: none;">
+    							<li><a href="#"><img src="../images/fb-icon.png"></a></li>
+    							<li><a href="#"><img src="../images/twitter-icon.png"></a></li>
+    							<li><a href="#"><img src="../images/in-icon.png"></a></li>
+    							<li><a href="#"><img src="../images/google-icon.png"></a></li>
+    						</ul>
+    					</div>
+    				</div>
+    				<div class="col-sm-2"></div>
+    			</div>
+    	    </div> 
+    	    <div class="footer_section_2" style="background-color: #080808;">
+		        <div class="row">
+    		        <div class="col-sm-4 col-lg-2">
+    		        	<p class="dummy_text" style="color:#ffffff80"> ipsum dolor sit amet, consectetur ipsum dolor sit amet, consectetur  ipsum dolor sit amet,</p>
+    		        </div>
+    		        <div class="col-sm-4 col-lg-2">
+    		        	<h2 class="shop_text" style="color:#ffffff80">Address </h2>
+    		        	<div class="image-icon"><img src="../images/map-icon.png"><span style="color:#ffffff80" class="pet_text">No 40 Baria Sreet 15/2 NewYork City, NY, United States.</span></div>
+    		        </div>
+    		        <div class="col-sm-4 col-md-6 col-lg-3">
+    				    <h2 class="shop_text" style="color:#ffffff80">Our Company </h2>
+    				    <div class="delivery_text">
+    				    	<ul style="color:#ffffff80">
+    				    		<li>Delivery</li>
+    				    		<li>Legal Notice</li>
+    				    		<li>About us</li>
+    				    		<li>Secure payment</li>
+    				    		<li>Contact us</li>
+    				    	</ul>
+    				    </div>
+    		        </div>
+    			<div class="col-sm-6 col-lg-3">
+    				<h2 class="adderess_text" style="color:#ffffff80">Products</h2>
+    				<div class="delivery_text" style="color:#ffffff80">
+    				    	<ul style="color:#ffffff80; list-style: none;">
+    				    		<li>Prices drop</li>
+    				    		<li>New products</li>
+    				    		<li>Best sales</li>
+    				    		<li>Contact us</li>
+    				    		<li>Sitemap</li>
+    				    	</ul>
+    				    </div>
+    			</div>
+    			<div class="col-sm-6 col-lg-2">
+    				<h2 class="adderess_text" style="color:#ffffff80">Newsletter</h2>
+    				<div class="form-group">
+                        <input type="text" class="enter_email" placeholder="Enter Your email" name="Name">
+                    </div>
+                    <button class="subscribr_bt" style="color:#ffffff80">Subscribe</button>
+    			</div>
+    			</div>
+    	        </div> 
+	        </div>
+    	</div>
+    </div>
+	<!-- section footer end -->
+	<div style="color:#ffffff80; background-color: #080808; text-align: center; padding-bottom: 6px;" class="copyright">2019 All Rights Reserved. <a href="https://html.design">Free html  Templates</a></div>

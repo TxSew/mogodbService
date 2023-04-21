@@ -1,94 +1,34 @@
-    <div class="container-lg">
-        <div class="nav">
-            <label for="nav-mobile-input" class="nav_bars-btn">
-                <i class="fas fa-bars"></i>
-            </label>
-
-            <input hidden type="checkbox" name="" class="nav_input" id="nav-mobile-input">
-            <label for="nav-mobile-input" class="nav_overlay"></label>
-            <nav class="nav-mobile">
-                <label for="nav-mobile-input" class="nav__mobile-close">
-                    <i class="fas fa-times"></i>
-                </label>
-                <ul class="nav__mobile-list">
-
-                    <li class="nav__mobile-list-user">
-
-                        <p><i class="fas fa-user"></i><a href="/carts/login">Đăng nhập</a> <span>/</span> <a href="/carts/register">Đăng ký</a>
-                        </p>
-                    </li>
-                    <hr>
-                    <li>
-                        <a href="" class="nav__mobile-link">TRANG CHỦ</a>
-                    </li>
-                    <hr>
-                    <li>
-                        <a href="" class="nav__mobile-link">SẢN PHẨM</a>
-                    </li>
-                    <hr>
-                    <li>
-                        <a href="" class="nav__mobile-link">Khóa học</a>
-                    </li>
-                    <hr>
-                    <li>
-                        <a href="" class="nav__mobile-link">TIN TỨC</a>
-                    </li>
-                    <hr>
-                    <li>
-                        <a href="" class="nav__mobile-link">LIÊN HỆ</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="nav-logo">
-                <h1>TC</h1>
-                <p>SHOP</p>
-            </div>
-            <nav class="nav-pc">
-                <ul class="nav__list">
-                    <li>
-                        <a style="color:#ffac4b" href="/" class="nav__link">TRANG CHỦ</a>
-                    </li>
-                    <li class="options">
-                        <a href="" class="nav__link">SẢN PHẨM</a>
-                        <div class="nav__link-options">
-                            <ul class="nav__link-options-list">
-                                <hr>
-                                <hr>
-                                <li><a href="#">Phụ kiện</a></li>
-                                <hr>
-                            </ul>
+ <body class="main-layout">
+	<!-- header section start -->
+	<div class="header_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="logo"><a href="#"><img src="images/logo.png"></a></div>
+				</div>
+				<div class="col-sm-9">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                           <a class="nav-item nav-link" href="/">Home</a>
+                           <a class="nav-item nav-link" href="#collection">Collection</a>
+                           <a class="nav-item nav-link" href="racing boots.html">Racing Boots</a>
+                           <a class="nav-item nav-link" href="#contact">Contact</a>
+{{#if checkAdmin}}
+                           <a class="nav-item nav-link" href="/carts/logout">logout</a>
+                           {{else}}
+                           <a class="nav-item nav-link" href="/carts/login">Login</a>
+                           {{/if}}
+                           <a class="nav-item nav-link last" href="#"><img src="images/search_icon.png"></a>
+                           <a class="nav-item nav-link last" href="contact.html"><img src="images/shop_icon.png"></a>
                         </div>
-                    </li>
-                    <li>
-                        <a href="" class="nav__link">TIN TỨC</a>
-                    </li>
-                    <li>
-                        <a href="" class="nav__link">LIÊN HỆ</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="nav-right">
-                <div class="search">
-                    <a href="#"><i class="fas fa-search"></i></a>
-                    <div class="search-hover">
-                        <form>
-                            <input class="search" type="text" name="search" placeholder="Tìm kiếm..." />
-                        </form>
                     </div>
-                </div>
-                <div class="user">
-                    <a href="#"> <i class="fas fa-user"></i></a>
-                    <div class="user-hover">
-                        <ul class="user-hover-list">
-                            <li class="nav_link"><a href="/carts/login">Đăng nhập</a></li>
-                            <li><a href="/carts/register">Đăng Ký</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="shopping">
-                    <a href="card.html"><i class="fas fa-shopping-cart"></i></a>
-
-                </div>
-            </div>
-        </div>
-    </div>
+                    </nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	

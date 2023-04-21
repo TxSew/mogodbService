@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const slug = require("mongoose-slug-updater");
+const Comment = require("./Comment");
 mongoose.plugin(slug);
 
 const Schema = mongoose.Schema;

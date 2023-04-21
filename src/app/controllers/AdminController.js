@@ -1,6 +1,7 @@
 const { multipleMongooseToObject } = require("../../util/mongoose");
 const Accout = require("../models/Accout");
 const Course = require("../models/Course");
+const Feedback = require("../models/Feedback");
 
 class AdminController {
   //get /news
@@ -8,12 +9,19 @@ class AdminController {
     try {
       const products = await Course.find({});
       const account = await Accout.find({})
+      const feedback = await Feedback.find({})
       const productCount = products.length;
       const accountCount = account.length;
+      const feedbackCount = feedback.length;
+       const checkAdmin = await Accout.find({role:"admin"}) != null
       res.render('admin', {
         products: multipleMongooseToObject(products),
+        account: multipleMongooseToObject(account),
+        feedbacks: multipleMongooseToObject(feedback),
         productCount,
-        accountCount
+        accountCount,
+        feedbackCount,
+         checkAdmin
       });
     } catch (err) {
       next()
@@ -36,6 +44,6 @@ class AdminController {
       .catch(next);
 
   }
-}
+ }
 
 module.exports = new AdminController();

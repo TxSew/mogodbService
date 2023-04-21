@@ -1,13 +1,16 @@
 const path = require("path");
 const cookieParser = require('cookie-parser')
 const express = require("express");
+ const session = require('express-session')
 const morgan = require("morgan");
 const handlebars = require("express-handlebars");
 const methodOverride = require("method-override");
+const cors = require('cors')
 const dotenv = require('dotenv')
 dotenv.config()
 const app = express();
 app.use(cookieParser())
+app.use(cors());
 const port = process.env.PORT || 3000;
 const db = require("./config/db/");
 const route = require("./routes");
@@ -23,6 +26,12 @@ app.use(
   })
 );
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 //middleware
 app.use(express.json())
 app.use(methodOverride("_method"));

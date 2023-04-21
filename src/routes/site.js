@@ -1,10 +1,13 @@
 var express = require("express");
 var router = express.Router();
 const siteController = require("../app/controllers/SiteController");
+const CourseController = require("../app/controllers/CourseController");
+const AccoutController = require("../app/controllers/AccoutController");
+const AdminController = require("../app/controllers/AdminController");
+const SiteController = require("../app/controllers/SiteController");
 router.get("/search", siteController.search);
+router.get("/viewFeed", siteController.feedbackView);
+router.post("/feedback", siteController.feedback);
 router.get("/", siteController.index);
+router.get("/:slug", CourseController.show);
 module.exports = router;
-// app.get("/news", (req, res) => {
-//   console.log(req.query);
-//   res.render("news");
-// });

@@ -1,0 +1,76 @@
+      
+	<!-- header section start -->
+ {{>header}} 
+    <div class="collection_section mt-5">
+    	<div class="container">
+    		<h5 class="new_text"><strong>{{course.name}}</strong></h5>
+    	    <p class="consectetur_text">{{course.description}}</p>
+    	</div>
+    </div>
+    <div class="collectipn_section_3 layuot_padding">
+    	<div class="container">
+    		<div class="racing_shoes">
+    			<div class="row">
+    				<div class="col-md-7">
+    					<div class="shoes-img3"><img style="width:300px ; height:200px" src="{{course.imageUrl}}"></div>
+    				</div>
+    				<div class="col-md-5">
+    				<strong style="flex:1 ; font-size:25px">{{course.name}}</strong>
+    				 <span style="color: #0a0506; font-size:20px; display:block">$ {{course.price}}</span>
+    					<button class=" btn seemore">ADD TO CART</button>
+    				</div>
+
+    			</div>
+    		</div>
+    					<a href="/" class=" mt-3 btn btn-dark">BACK</a>
+    	</div>
+    </div>
+ 
+   	<!-- contact section end -->
+	<!-- section footer start -->
+{{>footer}}
+     <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <!-- javascript --> 
+      <script src="js/owl.carousel.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+         
+         
+$('#myCarousel').carousel({
+            interval: false
+        });
+
+        //scroll slides on swipe for touch enabled devices
+
+        $("#myCarousel").on("touchstart", function(event){
+
+            var yClick = event.originalEvent.touches[0].pageY;
+            $(this).one("touchmove", function(event){
+
+                var yMove = event.originalEvent.touches[0].pageY;
+                if( Math.floor(yClick - yMove) > 1 ){
+                    $(".carousel").carousel('next');
+                }
+                else if( Math.floor(yClick - yMove) < -1 ){
+                    $(".carousel").carousel('prev');
+                }
+            });
+            $(".carousel").on("touchend", function(){
+                $(this).off("touchmove");
+            });
+        });
+      </script> 
+   </body>
