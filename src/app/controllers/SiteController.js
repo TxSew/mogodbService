@@ -9,16 +9,20 @@ class SiteController {
     console.log(req.session.user)
     Course.find({})
       .then((courses) => {
-        res.render("home", {
-          courses: multipleMongooseToObject(courses),
-          role: req.session.user
-        });
+        if (courses) {
+         res.status(200).json(courses)
+        }
+        else {
+          res.status(302).json({
+            message: 'that bai'
+          })
+        }
       })
       .catch(next);
   }
   //get /news/:slug
   search(req, res) {
-    res.render("search");
+    res.json('w')
   }
 
   async feedbackView(req, res, next) {
@@ -29,12 +33,7 @@ class SiteController {
       const productCount = products.length;
       const accountCount = account.length;
       const feedbackCount = feedback.length;
-      res.render('feedback', {
-        feedbacks: multipleMongooseToObject(feedbacks),
-        productCount,
-        accountCount,
-        feedbackCount
-      });
+      res.json(products)
     } catch (err) {
       next()
     }

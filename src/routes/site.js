@@ -9,5 +9,5 @@ router.get("/search", siteController.search);
 router.get("/viewFeed", siteController.feedbackView);
 router.post("/feedback", siteController.feedback);
 router.get("/", siteController.index);
-router.get("/:slug", CourseController.show);
+router.get("/course/:slug", CourseController.show);
 module.exports = router;

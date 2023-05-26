@@ -14,15 +14,7 @@ class AdminController {
       const accountCount = account.length;
       const feedbackCount = feedback.length;
        const checkAdmin = await Accout.find({role:"admin"}) != null
-      res.render('admin', {
-        products: multipleMongooseToObject(products),
-        account: multipleMongooseToObject(account),
-        feedbacks: multipleMongooseToObject(feedback),
-        productCount,
-        accountCount,
-        feedbackCount,
-         checkAdmin
-      });
+       res.json(products)
     } catch (err) {
       next()
     }
@@ -37,9 +29,7 @@ class AdminController {
       ]
     })
       .then((courses) =>
-        res.render("admin", {
-          courses: multipleMongooseToObject(courses),
-        })
+        res.json(courses)
       )
       .catch(next);
 

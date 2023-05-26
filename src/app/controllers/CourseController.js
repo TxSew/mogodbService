@@ -6,7 +6,7 @@ class CourseController {
   show(req, res, next) {
     Course.findOne({ slug: req.params.slug })
       .then((course) => {
-        res.render("show", { course: mongooseToObject(course) });
+        res.json(course)
       })
       .catch(next);
   }
@@ -19,15 +19,23 @@ class CourseController {
     const course = new Course(req.body);
     course
       .save()
-      .then(() => {
-        res.redirect("/admin");
+      .then((data) => {
+        if (data) {
+          return res.status(200).json(data)
+        }
+        else {
+          return res.status(302).json('not found')
+        }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        return res.status(403).json(error)
+      });
   }
+  
   edit(req, res, next) {
-    Course.findById(req.params.id)
+    Course.findOne({ _id: req.params.id })
       .then((course) =>
-        res.render("courses/edit", { course: mongooseToObject(course) })
+        res.json(course)
       )
       .catch(next);
     // res.render("courses/edit");
@@ -35,8 +43,18 @@ class CourseController {
   // PUT /courses/:id
   update(req, res, next) {
     Course.updateOne({ _id: req.params.id }, req.body)
-      .then(() => {
-        res.redirect("/admin");
+      .then((data) => {
+        if (data) {
+          res.status(200).json('update success')
+        }
+        else {
+          res.status(403).json('not found value')
+        }
+      })
+      .catch((err) => {
+        res.status(500).json({
+          message: 'server error'
+        })
       })
       .catch(next);
   }
@@ -44,7 +62,7 @@ class CourseController {
   delete(req, res, next) {
     Course.deleteOne({ _id: req.params.id })
       .then(() => {
-        res.redirect("/admin");
+        res.redirect('/')
       })
       .catch(next);
   }

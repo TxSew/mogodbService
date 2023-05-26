@@ -1,14 +1,17 @@
-const { multipleMongooseToObject, mongooseToObject } = require("../../util/mongoose");
+const {
+  multipleMongooseToObject,
+  mongooseToObject,
+} = require("../../util/mongoose");
 const Accouts = require("../models/Accout");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Accout = require("../models/Accout");
 class AccoutController {
   register(req, res, next) {
-    res.render("carts/register");
+    res.json("register");
   }
   login(req, res, next) {
-    res.render("carts/login");
+    res.json("login");
   }
   logout(req, res, next) {
     // Route cho trang đăng xuất
@@ -21,6 +24,7 @@ class AccoutController {
   store(req, res, next) {
     const { username, password, email, name } = req.body;
     // Generate a salt for the password
+    console.log(username)
     bcrypt.genSalt(10, (err, salt) => {
       if (err) {
         console.log(err);
@@ -41,37 +45,38 @@ class AccoutController {
         });
         account
           .save()
-          .then(() => {
-            res.redirect("/carts/login");
+          .then((data) => {
+            res.status(200).json({
+              message: 'thanh cong',
+              data: data
+            })
           })
           .catch(() => {
-            res.redirect('/carts/register')
+            res.redirect("/carts/register");
           });
       });
     });
   }
-//EDIT
-   edit(req, res, next) {
+  //EDIT
+  edit(req, res, next) {
     Accout.findById(req.params.id)
-      .then((accounts) =>
-         accounts
-      )
+      .then((accounts) => accounts)
       .then((accounts) => {
-        res.render("carts/editAccount", { account: mongooseToObject(accounts) })
+        res.json(accounts);
       })
       .catch(next);
   }
-   update(req, res, next) {
+  update(req, res, next) {
     Accout.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
-        res.redirect("/admin");
+        res.json('data')
       })
       .catch(next);
   }
- delete(req, res, next) {
+  delete(req, res, next) {
     Accouts.deleteOne({ _id: req.params.id })
       .then(() => {
-        res.redirect("/admin");
+        res.json("admin");
       })
       .catch(next);
   }
@@ -79,12 +84,13 @@ class AccoutController {
   //checkUser
   checkUser(req, res, next) {
     const { username, password } = req.body;
+    console.log(username, password)
     Accouts.findOne({ username: username }, (err, user) => {
       if (err) {
         return res.status(500).json({ message: "Internal server error" });
       }
       if (!user) {
-        return req.data = "user not found"
+        return (req.data = "user not found");
       }
       bcrypt.compare(password, user.password, (err, result) => {
         if (err) {
@@ -92,18 +98,17 @@ class AccoutController {
         }
         if (result) {
           if (user.role == "admin") {
-            req.session.user = {
+            req.session.admin = {
               username,
               role: "admin",
             };
-            return res.redirect("/admin");
+            return res.status(200).json(req.session.admin);
           } else {
             req.session.user = {
               username,
               role: "user",
             };
-
-            return res.redirect("/");
+            return res.status(200).json(req.session.user);
           }
         } else {
           return res.status(401).json({ message: "Invalid password" });
